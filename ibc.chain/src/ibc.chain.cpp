@@ -23,10 +23,10 @@ namespace eosio {
       _global.set( _gstate, _self );
    }
 
-   void chain::setlibdepth( uint32_t lib_depth ){
+   void chain::setglobal( const global_state& gs ){
       require_auth( _self );
-      eosio_assert( 50 <= lib_depth && lib_depth <= 330, "lib_depth must in range [50,330]" );
-      _gstate.lib_depth = lib_depth;
+      eosio_assert( 50 <= gs.lib_depth && gs.lib_depth <= 330, "lib_depth must in range [50,330]" );
+      _gstate = gs;
    }
 
    /**
@@ -597,6 +597,6 @@ namespace eosio {
 
 } /// namespace eosio
 
-EOSIO_DISPATCH( eosio::chain, (setlibdepth)(chaininit)(pushsection)(rminvalidls)(rmfirstsctn)(relay)(forceinit) )
+EOSIO_DISPATCH( eosio::chain, (setglobal)(chaininit)(pushsection)(rminvalidls)(rmfirstsctn)(relay)(forceinit) )
 
 

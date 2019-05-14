@@ -217,10 +217,12 @@ namespace eosio {
          uint32_t          cache_cashtrxs_table_records = 0;
          uint32_t          max_original_trxs_per_block = 0;
          bool              active = true;  // use as global lock
+         uint32_t          lock_start_time = 0;
+         uint32_t          lock_minutes = 0;
 
          // explicit serialization macro is necessary, without this, error "Exceeded call depth maximum" will occur when call state_singleton.set(state)
          EOSLIB_SERIALIZE( global_state, (ibc_chain_contract)(peerchain_name)(peerchain_ibc_token_contract)(max_origtrxs_table_records)
-               (cache_cashtrxs_table_records)(max_original_trxs_per_block)(active) )
+               (cache_cashtrxs_table_records)(max_original_trxs_per_block)(active)(lock_start_time)(lock_minutes) )
       };
 
    private:

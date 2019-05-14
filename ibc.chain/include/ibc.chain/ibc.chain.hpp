@@ -95,7 +95,7 @@ namespace eosio {
       ~chain();
 
       [[eosio::action]]
-      void setlibdepth( uint32_t lib_depth );
+      void setglobal( const global_state& gs );
 
       [[eosio::action]]
       void chaininit( const std::vector<char>&     header,
